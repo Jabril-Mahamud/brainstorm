@@ -16,16 +16,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { DeleteButtonProps } from "@/types";
 
-interface DeleteButtonProps {
-  filePath: string;
-  fileId: string;
-  onComplete?: () => void;
-  onError?: (error: string) => void;
-  disabled?: boolean;
-  iconOnly?: boolean;
-  onOptimisticDelete?: (fileId: string) => void;
-}
 
 export default function DeleteButton({
   filePath,

@@ -4,25 +4,9 @@ import { Headphones, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
 import { createClient } from "@/utils/supabase/client";
+import { ConvertButtonProps, TTSSettings } from "@/types";
 
-interface ConvertButtonProps {
-  text: string;
-  fileName: string;
-  disabled?: boolean;
-  iconOnly?: boolean;
-  onProgress: (progress: number) => void;
-  onComplete: () => void;
-  onError: (error: string) => void;
-}
 
-interface TTSSettings {
-  tts_service: 'Amazon' | 'ElevenLabs';
-  api_key?: string;
-  aws_polly_voice?: string;
-  elevenlabs_voice_id?: string;
-  elevenlabs_stability?: number;
-  elevenlabs_similarity_boost?: number;
-}
 
 export function ConvertButton(props: ConvertButtonProps) {
   const [converting, setConverting] = useState(false);

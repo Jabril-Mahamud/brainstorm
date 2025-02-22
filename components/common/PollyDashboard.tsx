@@ -1,13 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { PollyUsageData } from '@/types/usage';
 
-interface PollyUsageData {
-  user_id: string;
-  characters_synthesized: number;
-  voice_id: string;
-  synthesis_date: string;
-}
 
 const PollyUsageStats: React.FC = () => {
   const [usageData, setUsageData] = useState<PollyUsageData[]>([]);

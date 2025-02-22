@@ -6,15 +6,13 @@ import { Button } from "@/components/ui/button";
 import { InfoIcon, Upload, Loader2 } from "lucide-react";
 import { useFileUpload } from "@/hooks/useFileUpload";
 import { toast } from "@/hooks/use-toast";
+import { FileUploadProps } from "@/types";
 
-interface FileUploadFormProps {
-  onSuccess?: () => void;
-}
-
-export function FileUploadForm({ onSuccess }: FileUploadFormProps) {
+export function FileUploadForm({ onSuccess }: FileUploadProps) {
   const { files, setFiles, uploading, handleUpload, validateFiles } = useFileUpload();
   const [error, setError] = useState<string | null>(null);
 
+  // Consider extracting these handlers to custom hooks or utils
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -48,10 +46,8 @@ export function FileUploadForm({ onSuccess }: FileUploadFormProps) {
     const selectedFiles = e.target.files;
     if (!selectedFiles) return;
 
-    // Clear previous error state
     setError(null);
 
-    // Validate files
     const validationError = validateFiles(selectedFiles);
     if (validationError) {
       setError(validationError);
@@ -60,7 +56,7 @@ export function FileUploadForm({ onSuccess }: FileUploadFormProps) {
         description: validationError,
         variant: "destructive",
       });
-      e.target.value = ''; // Reset the input
+      e.target.value = '';
       return;
     }
 

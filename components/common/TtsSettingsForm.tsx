@@ -17,17 +17,7 @@ import { createClient } from "@/utils/supabase/client";
 import { Loader2, Lock, Star, Mic2 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-
-interface Voice {
-  voice_id: string;
-  name: string;
-  preview_url?: string;
-  category?: string;
-  id?: string;
-  gender?: string;
-  isFree?: boolean;
-  isNeural?: boolean;
-}
+import { Voice } from "@/types/tts";
 
 export default function TtsSettingsForm() {
   const [settings, setSettings] = useState({

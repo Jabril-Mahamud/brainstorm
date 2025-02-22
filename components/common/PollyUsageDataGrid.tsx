@@ -24,47 +24,10 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { ChevronDown, Download } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { TableBaseProps, TableCellProps, TableRowProps } from '@/types/ui';
+import { PollyUsageData, UsageStats } from '@/types/usage';
 
-interface TableBaseProps {
-  children: ReactNode;
-  className?: string;
-}
 
-interface TableRowProps extends TableBaseProps {
-  'data-state'?: string | boolean;
-}
-
-interface TableCellProps extends TableBaseProps {
-  colSpan?: number;
-  style?: React.CSSProperties;
-}
-
-interface PollyUsageData {
-  user_id: string;
-  characters_synthesized: number;
-  voice_id: string;
-  synthesis_date: string;
-  user: {
-    email: string;
-    id: string;
-  } | null;
-}
-
-interface UsageStats {
-  totalCharacters: number;
-  totalUsers: number;
-  averagePerUser: number;
-}
-
-// Table component interfaces
-interface TableBaseProps {
-  children: ReactNode;
-  className?: string;
-}
-interface TableCellProps extends TableBaseProps {
-  colSpan?: number;
-  style?: React.CSSProperties;
-}
 
 // Table components
 const Table: React.FC<TableBaseProps> = ({ children, className = '' }) => (

@@ -6,19 +6,9 @@ import { File, RefreshCw, ArrowRight, CheckCircle, XCircle } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent } from "@/components/ui/card"
+import { ConversionInterfaceProps, Voice } from '@/types/conversion'
 
-interface FileData {
-  id: string
-  file_path: string
-  original_name: string
-  created_at: string
-  conversion_status: string
-  audio_file_path: string | null
-  voice_id: string | null
-  conversion_error: string | null
-}
-
-const VOICES = [
+const VOICES: Voice[] = [
   { id: "21m00Tcm4TlvDq8ikWAM", name: "Rachel" },
   { id: "AZnzlk1XvdvUeBnXmlld", name: "Domi" },
   { id: "EXAVITQu4vr4xnSDxMaL", name: "Bella" },
@@ -28,9 +18,9 @@ const VOICES = [
   { id: "VR6AewLTigWG4xSOukaG", name: "Arnold" },
   { id: "pNInz6obpgDQGcFmaJgB", name: "Adam" },
   { id: "yoZ06aMxZJJ28mfd3POQ", name: "Sam" }
-]
+] as const;
 
-export default function ConversionInterface({ initialFiles }: { initialFiles: FileData[] }) {
+export default function ConversionInterface({ initialFiles }: ConversionInterfaceProps) {
   const [selectedFileId, setSelectedFileId] = useState<string | null>(null)
   const [selectedVoiceId, setSelectedVoiceId] = useState<string | null>(null)
   const [converting, setConverting] = useState(false)
@@ -39,6 +29,7 @@ export default function ConversionInterface({ initialFiles }: { initialFiles: Fi
   const router = useRouter()
 
   const selectedFile = initialFiles.find(f => f.id === selectedFileId)
+
 
   const handleConvert = async () => {
     if (!selectedFileId || !selectedVoiceId) {

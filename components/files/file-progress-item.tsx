@@ -1,19 +1,9 @@
-import { UploadProgress } from "@/utils/types";
+import { FileProgressItemProps, UploadProgress } from "@/utils/types";
 import { Progress } from "../ui/progress";
 import { ConvertButton } from "../upload/convert-button";
 
 // components/upload/file-progress-item.tsx
-interface FileProgressItemProps {
-    file: File;
-    progress: UploadProgress;
-    showButtons: boolean;
-    isText: boolean;
-    convertedText: string;
-    onUpdateProgress: (fileName: string, progress: number) => void;
-    onConvertComplete: () => void;
-    onConvertError: (error: string) => void;
-    getStatusText: (status: UploadProgress["status"]) => string;
-  }
+
   
   export function FileProgressItem({
     file,

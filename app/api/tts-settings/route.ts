@@ -1,15 +1,9 @@
 import { createClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 import { captureServerEvent } from "@/utils/posthog-server";
+import { TtsSettings } from "@/utils/types";
 
-interface TtsSettings {
-  id: string;
-  tts_service: string;
-  api_key?: string;
-  aws_polly_voice?: string;
-  created_at: string;
-  updated_at: string;
-}
+
 
 export async function GET(request: NextRequest) {
   const supabase = await createClient();

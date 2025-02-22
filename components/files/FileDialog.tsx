@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import { useFileManager } from "@/hooks/useFileManager";
 import { ConvertButton } from "../upload/convert-button";
 import DeleteButton from "../upload/delete-button";
-import { FileDialogProps } from "@/utils/types";
+import { FileDialogProps, ConvertButtonProps } from "@/types";
 
 export function FileDialog({
   title = "Upload Files",
